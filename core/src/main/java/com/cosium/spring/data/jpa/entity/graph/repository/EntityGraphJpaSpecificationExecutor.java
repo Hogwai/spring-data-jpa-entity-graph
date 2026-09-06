@@ -22,32 +22,43 @@ public interface EntityGraphJpaSpecificationExecutor<T> extends JpaSpecification
   /**
    * @see JpaSpecificationExecutor#findOne(Specification)
    */
-  Optional<T> findOne(Specification<T> spec, @Nullable EntityGraph entityGraph);
+  default Optional<T> findOne(Specification<T> spec, @Nullable EntityGraph entityGraph) {
+    return findOne(spec);
+  }
 
   /**
    * @see JpaSpecificationExecutor#findAll(Specification)
    */
-  List<T> findAll(@Nullable Specification<T> spec, @Nullable EntityGraph entityGraph);
+  default List<T> findAll(@Nullable Specification<T> spec, @Nullable EntityGraph entityGraph) {
+    return findAll(spec);
+  }
 
   /**
    * @see JpaSpecificationExecutor#findAll(Specification, Pageable)
    */
-  Page<T> findAll(
-      @Nullable Specification<T> spec, Pageable pageable, @Nullable EntityGraph entityGraph);
+  default Page<T> findAll(
+      @Nullable Specification<T> spec, Pageable pageable, @Nullable EntityGraph entityGraph) {
+    return findAll(spec, pageable);
+  }
 
   /**
    * @see JpaSpecificationExecutor#findAll(Specification, Specification, Pageable)
    */
-  Page<T> findAll(
+  default Page<T> findAll(
       @Nullable Specification<T> spec,
       @Nullable Specification<T> countSpec,
       Pageable pageable,
-      @Nullable EntityGraph entityGraph);
+      @Nullable EntityGraph entityGraph) {
+    return findAll(spec, countSpec, pageable);
+  }
 
   /**
    * @see JpaSpecificationExecutor#findAll(Specification, Sort)
    */
-  List<T> findAll(@Nullable Specification<T> spec, Sort sort, @Nullable EntityGraph entityGraph);
+  default List<T> findAll(
+      @Nullable Specification<T> spec, Sort sort, @Nullable EntityGraph entityGraph) {
+    return findAll(spec, sort);
+  }
 
   /**
    * @see JpaSpecificationExecutor#findBy(PredicateSpecification, Function)

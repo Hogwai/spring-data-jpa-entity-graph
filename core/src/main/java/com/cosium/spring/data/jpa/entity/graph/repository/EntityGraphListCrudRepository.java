@@ -17,11 +17,15 @@ public interface EntityGraphListCrudRepository<T, ID>
    * @see ListCrudRepository#findAll()
    */
   @Override
-  List<T> findAll(@Nullable EntityGraph entityGraph);
+  default List<T> findAll(@Nullable EntityGraph entityGraph) {
+    return findAll();
+  }
 
   /**
    * @see ListCrudRepository#findAllById(Iterable)
    */
   @Override
-  List<T> findAllById(Iterable<ID> ids, @Nullable EntityGraph entityGraph);
+  default List<T> findAllById(Iterable<ID> ids, @Nullable EntityGraph entityGraph) {
+    return findAllById(ids);
+  }
 }

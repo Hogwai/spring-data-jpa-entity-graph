@@ -19,22 +19,30 @@ public interface EntityGraphQueryByExampleExecutor<T> extends QueryByExampleExec
   /**
    * @see QueryByExampleExecutor#findOne(Example)
    */
-  <S extends T> Optional<S> findOne(Example<S> example, @Nullable EntityGraph entityGraph);
+  default <S extends T> Optional<S> findOne(Example<S> example, @Nullable EntityGraph entityGraph) {
+    return findOne(example);
+  }
 
   /**
    * @see QueryByExampleExecutor#findAll(Example)
    */
-  <S extends T> Iterable<S> findAll(Example<S> example, @Nullable EntityGraph entityGraph);
+  default <S extends T> Iterable<S> findAll(Example<S> example, @Nullable EntityGraph entityGraph) {
+    return findAll(example);
+  }
 
   /**
    * @see QueryByExampleExecutor#findAll(Example, Sort)
    */
-  <S extends T> Iterable<S> findAll(
-      Example<S> example, Sort sort, @Nullable EntityGraph entityGraph);
+  default <S extends T> Iterable<S> findAll(
+      Example<S> example, Sort sort, @Nullable EntityGraph entityGraph) {
+    return findAll(example, sort);
+  }
 
   /**
    * @see QueryByExampleExecutor#findAll(Example, Pageable)
    */
-  <S extends T> Page<S> findAll(
-      Example<S> example, Pageable pageable, @Nullable EntityGraph entityGraph);
+  default <S extends T> Page<S> findAll(
+      Example<S> example, Pageable pageable, @Nullable EntityGraph entityGraph) {
+    return findAll(example, pageable);
+  }
 }

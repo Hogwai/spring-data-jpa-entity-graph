@@ -22,11 +22,16 @@ public interface EntityGraphJpaRepository<T, ID>
    * @see JpaRepository#findAll(Example)
    */
   @Override
-  <S extends T> List<S> findAll(Example<S> example, @Nullable EntityGraph entityGraph);
+  default <S extends T> List<S> findAll(Example<S> example, @Nullable EntityGraph entityGraph) {
+    return findAll(example);
+  }
 
   /**
    * @see JpaRepository#findAll(Example, Sort)
    */
   @Override
-  <S extends T> List<S> findAll(Example<S> example, Sort sort, @Nullable EntityGraph entityGraph);
+  default <S extends T> List<S> findAll(
+      Example<S> example, Sort sort, @Nullable EntityGraph entityGraph) {
+    return findAll(example, sort);
+  }
 }

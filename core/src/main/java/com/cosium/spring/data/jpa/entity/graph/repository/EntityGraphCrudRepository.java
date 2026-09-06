@@ -16,15 +16,21 @@ public interface EntityGraphCrudRepository<T, ID>
   /**
    * @see CrudRepository#findById(Object)
    */
-  Optional<T> findById(ID id, @Nullable EntityGraph entityGraph);
+  default Optional<T> findById(ID id, @Nullable EntityGraph entityGraph) {
+    return findById(id);
+  }
 
   /**
    * @see CrudRepository#findAll()
    */
-  Iterable<T> findAll(@Nullable EntityGraph entityGraph);
+  default Iterable<T> findAll(@Nullable EntityGraph entityGraph) {
+    return findAll();
+  }
 
   /**
    * @see CrudRepository#findAllById(Iterable)
    */
-  Iterable<T> findAllById(Iterable<ID> ids, @Nullable EntityGraph entityGraph);
+  default Iterable<T> findAllById(Iterable<ID> ids, @Nullable EntityGraph entityGraph) {
+    return findAllById(ids);
+  }
 }

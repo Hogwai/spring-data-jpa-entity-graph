@@ -17,5 +17,8 @@ public interface EntityGraphListPagingAndSortingRepository<T, ID>
   /**
    * @see ListPagingAndSortingRepository#findAll(Sort)
    */
-  List<T> findAll(Sort sort, @Nullable EntityGraph entityGraph);
+  @Override
+  default List<T> findAll(Sort sort, @Nullable EntityGraph entityGraph) {
+    return findAll(sort);
+  }
 }

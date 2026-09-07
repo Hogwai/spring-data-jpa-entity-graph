@@ -20,44 +20,31 @@ public interface EntityGraphQuerydslPredicateExecutor<T> extends QuerydslPredica
   /**
    * @see QuerydslPredicateExecutor#findOne(Predicate)
    */
-  default Optional<T> findOne(Predicate predicate, @Nullable EntityGraph entityGraph) {
-    return findOne(predicate);
-  }
+  Optional<T> findOne(Predicate predicate, @Nullable EntityGraph entityGraph);
 
   /**
    * @see QuerydslPredicateExecutor#findAll(Predicate)
    */
-  default Iterable<T> findAll(Predicate predicate, @Nullable EntityGraph entityGraph) {
-    return findAll(predicate);
-  }
+  Iterable<T> findAll(Predicate predicate, @Nullable EntityGraph entityGraph);
 
   /**
    * @see QuerydslPredicateExecutor#findAll(Predicate, Sort)
    */
-  default Iterable<T> findAll(Predicate predicate, Sort sort, @Nullable EntityGraph entityGraph) {
-    return findAll(predicate, sort);
-  }
+  Iterable<T> findAll(Predicate predicate, Sort sort, @Nullable EntityGraph entityGraph);
 
   /**
    * @see QuerydslPredicateExecutor#findAll(Predicate, OrderSpecifier[])
    */
-  default Iterable<T> findAll(
-      Predicate predicate, @Nullable EntityGraph entityGraph, OrderSpecifier<?>... orders) {
-    return findAll(predicate, orders);
-  }
+  Iterable<T> findAll(
+      Predicate predicate, @Nullable EntityGraph entityGraph, OrderSpecifier<?>... orders);
 
   /**
    * @see QuerydslPredicateExecutor#findAll(OrderSpecifier[])
    */
-  default Iterable<T> findAll(@Nullable EntityGraph entityGraph, OrderSpecifier<?>... orders) {
-    return findAll(orders);
-  }
+  Iterable<T> findAll(@Nullable EntityGraph entityGraph, OrderSpecifier<?>... orders);
 
   /**
    * @see QuerydslPredicateExecutor#findAll(Predicate, Pageable)
    */
-  default Page<T> findAll(
-      Predicate predicate, Pageable pageable, @Nullable EntityGraph entityGraph) {
-    return findAll(predicate, pageable);
-  }
+  Page<T> findAll(Predicate predicate, Pageable pageable, @Nullable EntityGraph entityGraph);
 }

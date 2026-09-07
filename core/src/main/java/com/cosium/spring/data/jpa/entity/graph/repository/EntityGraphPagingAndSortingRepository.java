@@ -18,14 +18,10 @@ public interface EntityGraphPagingAndSortingRepository<T, ID>
   /**
    * @see PagingAndSortingRepository#findAll(Sort)
    */
-  default Iterable<T> findAll(Sort sort, @Nullable EntityGraph entityGraph) {
-    return findAll(sort);
-  }
+  Iterable<T> findAll(Sort sort, @Nullable EntityGraph entityGraph);
 
   /**
    * @see PagingAndSortingRepository#findAll(Pageable)
    */
-  default Page<T> findAll(Pageable pageable, @Nullable EntityGraph entityGraph) {
-    return findAll(pageable);
-  }
+  Page<T> findAll(Pageable pageable, @Nullable EntityGraph entityGraph);
 }
